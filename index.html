@@ -1,8 +1,381 @@
-<html>
-<head>
-  <title>Beal Family Dinner</title>
-</head>
-<body>
-  <h1>Welcome to the Beal Family Dinner site</h1>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Beal Family Dinner 2017</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="site.css" rel="stylesheet">
+
+<style>
+  .step { margin: 20px 0px 20px 0px; }
+  .stepTitle { font-size: 120%; font-weight: bold; }
+  .orderColumn { width: 250px; text-align: left; vertical-align: top; }
+</style>
+<!--[if IE]>
+<style>#bealHeading {margin-top: 30px; }</style>
+<![endif]-->
+<script>
+/*!
+ * jQuery Cookie Plugin v1.3.1
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
+ */
+(function (factory) {
+	if (typeof define === 'function' && define.amd && define.amd.jQuery) {
+		// AMD. Register as anonymous module.
+		define(['jquery'], factory);
+	} else {
+		// Browser globals.
+		factory(jQuery);
+	}
+}(function ($) {
+
+	var pluses = /\+/g;
+
+	function raw(s) {
+		return s;
+	}
+
+	function decoded(s) {
+		return decodeURIComponent(s.replace(pluses, ' '));
+	}
+
+	function converted(s) {
+		if (s.indexOf('"') === 0) {
+			// This is a quoted cookie as according to RFC2068, unescape
+			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+		}
+		try {
+			return config.json ? JSON.parse(s) : s;
+		} catch(er) {}
+	}
+
+	var config = $.cookie = function (key, value, options) {
+
+		// write
+		if (value !== undefined) {
+			options = $.extend({}, config.defaults, options);
+
+			if (typeof options.expires === 'number') {
+				var days = options.expires, t = options.expires = new Date();
+				t.setDate(t.getDate() + days);
+			}
+
+			value = config.json ? JSON.stringify(value) : String(value);
+
+			return (document.cookie = [
+				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
+				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+				options.path    ? '; path=' + options.path : '',
+				options.domain  ? '; domain=' + options.domain : '',
+				options.secure  ? '; secure' : ''
+			].join(''));
+		}
+
+		// read
+		var decode = config.raw ? raw : decoded;
+		var cookies = document.cookie.split('; ');
+		var result = key ? undefined : {};
+		for (var i = 0, l = cookies.length; i < l; i++) {
+			var parts = cookies[i].split('=');
+			var name = decode(parts.shift());
+			var cookie = decode(parts.join('='));
+
+			if (key && key === name) {
+				result = converted(cookie);
+				break;
+			}
+
+			if (!key) {
+				result[name] = converted(cookie);
+			}
+		}
+
+		return result;
+	};
+
+	config.defaults = {};
+
+	$.removeCookie = function (key, options) {
+		if ($.cookie(key) !== undefined) {
+			$.cookie(key, '', $.extend(options, { expires: -1 }));
+			return true;
+		}
+		return false;
+	};
+
+}));
+</script>
+<script>
+  function studentMissing() {
+    return !$("#studentFirstName").val() || !$("#studentLastName").val();
+  }
+
+  function teacherMissing() {
+    return !$("#teacherName option:selected").val();
+  }
+
+  function setTeacherAndStudent() {
+    var student = studentMissing() ? "" : $("#studentLastName").val() + ", " + $("#studentFirstName").val();
+    $("#addDinnerStudent,#addPizzaStudent,#addRaffleStudent").val(student);
+    $.cookie('bfd2013fname', $("#studentFirstName").val());
+    $.cookie('bfd2013lname', $("#studentLastName").val());
+    var teacher = teacherMissing() ? "" : $("#teacherName option:selected").val();
+    $("#addDinnerTeacher,#addPizzaTeacher,#addRaffleTeacher").val(teacher);
+    $.cookie('bfd2013teach', teacher);
+  }
+
+  function initTeacherAndStudent() {
+    var studentFirstName = $.cookie('bfd2013fname');
+    if (studentFirstName) {
+      $("#studentFirstName").val(studentFirstName);
+    }
+    var studentLastName = $.cookie('bfd2013lname');
+    if (studentLastName) {
+      $("#studentLastName").val(studentLastName);
+    }
+    var teacher = $.cookie('bfd2013teach');
+    if (teacher) {
+      $("#teacherName option").each(function () {
+        if (this.value == teacher) {
+          this.selected = true;
+        }
+      });
+    }
+  }
+
+  $(document).ready(function() {
+    $("#addDinner,#addPizza").submit(function(event) {
+      if (studentMissing()) { alert("Please enter the Student's Name"); event.preventDefault(); return; }
+      if (teacherMissing()) { alert("Please select the Teacher's Name"); event.preventDefault(); return; }
+      setTeacherAndStudent();
+    });
+    $("#addRaffle").submit(function(event) {
+      setTeacherAndStudent();
+    });
+    initTeacherAndStudent();
+  });
+</script>
+  </head>
+  <body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Beal Family Dinner 2017</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="#contact" data-toggle="modal" data-target="#contactModal">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="site">
+	<img src="beal.jpg" >
+        <h1>Beal Family Dinner 2017 Order Form</h1>
+        <p class="lead">Follow the three easy steps below to order dinner tickets, extra pizza slices, and raffle tickets for the dinner.</p>
+        <p>Payment is collected securely via PayPal using your PayPal account or by paying via credit card (no PayPal account needed). Please contact <a href="mailto:bealschoolpto@gmail.com" >bealschoolpto@gmail.com</a> with any questions about the dinner or issues with ordering.</p>
+
+<!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_SbyPP_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark"></a></td></tr></table><!-- PayPal Logo -->
+
+<div class="step">
+<span class="stepTitle">Step 1: Enter student's and teacher's name</span>
+<div style="margin-top: 5px" >
+<form>
+     <table align="center">
+         <tr>
+             <td>Student First Name:</td>
+             <td><input id="studentFirstName" type="text" size="15" maxlength="40" /></td>
+         </tr>
+         <tr>
+             <td>Student Last Name:</td>
+             <td><input id="studentLastName" type="text" size="15" maxlength="40" /></td>
+         </tr>
+         <tr>
+             <td>Teacher:</td>
+             <td>
+               <select id="teacherName" >
+                 <option value="">Select Teacher</option>
+                 <option value="Aulenback">Aulenback</option>
+                 <option value="Barrett">Barrett</option>
+                 <option value="Biadasz">Biadasz</option>
+                 <option value="Chaves">Chaves</option>
+                 <option value="Cipro">Cipro</option>
+                 <option value="Costello">Costello</option>
+                 <option value="Downs AM">Downs AM</option>
+                 <option value="Downs PM">Downs PM</option>
+                 <option value="Knott">Knott</option>
+                 <option value="MacLaughlin">MacLaughlin</option>
+                 <option value="McKiernan">McKiernan</option>
+                 <option value="Middlesworth">Middlesworth</option>
+                 <option value="Pinto">Pinto</option>
+                 <option value="Thayer AM">Thayer AM</option>
+                 <option value="Thayer PM">Thayer PM</option>
+                 <option value="Zakar">Zakar</option>
+               </select>
+             </td>
+         </tr>
+     </table>
+</form>
+</div>
+</div>
+
+<div class="step" >
+<span class="stepTitle">Step 2: Select item quantity and click Add to Cart (do once for each item)</span>
+<div style="margin: 10px 0px 10px 0px">
+  After adding an item to your cart, click the "Continue Shopping" link at PayPal to return to this page to add more items.  Click the "Check Out" button at PayPal to complete your order.
+</div>
+<table style="margin-top: 10px;">
+     <tbody>
+         <tr>
+             <th class="orderColumn">Dinner Tickets</th>
+             <th class="orderColumn">Extra Pizza Slizes</th>
+             <th class="orderColumn">Raffle Tickets</th>
+         </tr>
+         <tr>
+             <td valign="top">
+<form id="addDinner" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="D4WW6CDUAWDRY">
+<table>
+                         <tr>
+                             <td><select name="quantity">
+                             <option value="1">1 Ticket - $7</option>
+                             <option value="2">2 Tickets - $14</option>
+                             <option value="3">3 Tickets - $21</option>
+                             <option value="4">4 Tickets - $28</option>
+                             <option value="5">5 Tickets - $35</option>
+                             <option value="6">6 Tickets - $42</option>
+                             <option value="7">7 Tickets - $49</option>
+                             <option value="8">8 Tickets - $56</option>
+                             </select> </td>
+                         </tr>
+<tr><td><input type="hidden" name="on0" value="Seating Preference">Seating Preference</td></tr><tr><td><select name="os0">
+	<option value="5:15 - 6:15 PM">5:15 - 6:15 PM </option>
+	<option value="6:30 - 7:30 PM">6:30 - 7:30 PM </option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="on1" value="Student Name"><input id="addDinnerStudent" type="hidden" name="os1" >
+<input type="hidden" name="on2" value="Teacher Name"><input id="addDinnerTeacher" type="hidden" name="os2" >
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+             </td>
+
+             <td valign="top">
+<form id="addPizza" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="ZJYNB4DLSNQAY">
+<table>
+                         <tr>
+                             <td><select name="quantity">
+                             <option value="1">1 Slice - $1</option>
+                             <option value="2">2 Slices - $2</option>
+                             <option value="3">3 Slices - $3</option>
+                             <option value="4">4 Slices - $4</option>
+                             <option value="5">5 Slices - $5</option>
+                             <option value="6">6 Slices - $6</option>
+                             <option value="7">7 Slices - $7</option>
+                             <option value="8">8 Slices - $8</option>
+                             <option value="9">9 Slices - $9</option>
+                             <option value="10">10 Slices - $10</option>
+                             </select> </td>
+                         </tr>
+</table>
+<input type="hidden" name="on0" value="Student Name"><input id="addPizzaStudent" type="hidden" name="os0" >
+<input type="hidden" name="on1" value="Teacher Name"><input id="addPizzaTeacher" type="hidden" name="os1" >
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<br/><span><em>(Requires Dinner Ticket Purchase)</em></span>
+</form>
+             </td>
+             <td valign="top">
+<form id="addRaffle" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="2HWF2BGCJDHEG">
+<table>
+<tr><td><select name="os0">
+	<option value="1 Ticket">1 Ticket - $1</option>
+	<option value="6 Tickets">6 Tickets - $5</option>
+	<option value="15 Tickets">15 Tickets - $10</option>
+	<option value="30 Tickets">30 Tickets - $20</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="on0" value="Raffle Tickets">
+<input type="hidden" name="on1" value="Student Name"><input id="addRaffleStudent" type="hidden" name="os1" >
+<input type="hidden" name="on2" value="Teacher Name"><input id="addRaffleTeacher" type="hidden" name="os2" >
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+             </td>
+         </tr>
+     </tbody>
+</table>
+</div>
+
+<div class="step">
+<span class="stepTitle">Step 3: Review cart and check out at PayPal</span>
+<div style="margin-top: 10px; margin-bottom:10px;" >
+To review your cart and begin the check out process at PayPal, click the "View Cart" button.
+</div>
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+
+      </div>
+
+    </div><!-- /.container -->
+<div id="contactModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Contact</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please contact <a href="mailto:bealschoolpto@gmail.com" >bealschoolpto@gmail.com</a> for any questions about the dinner.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  </body>
 </html>
