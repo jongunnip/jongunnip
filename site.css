@@ -8,5 +8,5 @@ body {
 
 .step { margin: 20px 0px 20px 0px; }
 .stepTitle { font-size: 140%; font-weight: bold; }
-.orderColumn { width: 250px; text-align: left; vertical-align: top; }
+.orderColumn { width: 250px; text-align: center; vertical-align: top; }
 
