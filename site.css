@@ -19,7 +19,7 @@ h1 { font-size: 30px; font-weight: bold }
 .overview .footnote { font-size: 11px; margin-top: -10px }
 .payment { font-size: 11px; }
 .buttonName { font-weight: bold }
-ul.instructionList { margin-left: 10%; margin-right: 10%; text-align: left }
+ul.instructionList { margin-left: 15%; margin-right: 15%; text-align: left }
 .sponsors { margin-top: 30px; }
 .sponsors h4 { text-decoration: underline }
 .sponsors p { margin: 2px }
