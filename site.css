@@ -10,3 +10,17 @@ body {
 .stepTitle { font-size: 140%; font-weight: bold; }
 .orderColumn { width: 250px; text-align: center; vertical-align: top; }
 
+h1 { font-size: 30px; font-weight: bold }
+.info { font-size: 14px;  }
+.instructions { font-size: 16px; font-weight: bold; margin-top: 20px; }
+.overview { text-align: center; font-style: italic }
+.overview p { margin: 5px }
+.overview label { font-weight: bold }
+.overview .footnote { font-size: 11px; margin-top: -10px }
+.payment { font-size: 11px; }
+.buttonName { font-weight: bold }
+ul.instructionList { margin-left: 10%; margin-right: 10%; text-align: left }
+.sponsors { margin-top: 30px; }
+.sponsors h4 { text-decoration: underline }
+.sponsors p { margin: 2px }
+.footer { margin-top: 30px;  }
