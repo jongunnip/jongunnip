@@ -13,6 +13,7 @@ body {
 h1 { font-size: 30px; font-weight: bold }
 .info { font-size: 14px;  }
 .instructions { font-size: 16px; font-weight: bold; margin-top: 20px; }
+.ordering-closed { font-size: 24px; font-weight: bold; margin-top: 20px; }
 .overview { text-align: center; font-style: italic }
 .overview p { margin: 5px }
 .overview label { font-weight: bold }
