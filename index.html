@@ -206,38 +206,180 @@
             <div class="footnote">*Children 3 and under are Free</div></p>
 	</div>
 	
-<p class="ordering-closed" >Sorry, we are no longer accepting new orders for the dinner.</p>
+	  
+	
+
+	<p class="instructions" >Follow the three easy steps below to order dinner tickets, extra pizza slices, and raffle tickets.</p>
+        <p class="payment" >Payment is collected securely via PayPal using your PayPal account or by paying via credit card (no PayPal account needed).</p>
+
+<!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_SbyPP_mc_vs_dc_ae.jpg" height="75" border="0" alt="PayPal Acceptance Mark"></a></td></tr></table><!-- PayPal Logo -->
+
+<div class="step">
+<span class="stepTitle">Step 1: Enter student's and teacher's name</span>
+<div style="margin-top: 5px" >
+<form>
+     <table align="center">
+         <tr>
+             <td>Student First Name:</td>
+             <td><input id="studentFirstName" type="text" size="15" maxlength="40" /></td>
+         </tr>
+         <tr>
+             <td>Student Last Name:</td>
+             <td><input id="studentLastName" type="text" size="15" maxlength="40" /></td>
+         </tr>
+         <tr>
+             <td>Teacher:</td>
+             <td>
+               <select id="teacherName" >
+                 <option value="">Select Teacher</option>
+                 <option value="Aulenback">Aulenback</option>
+                 <option value="Barrett">Barrett</option>
+                 <option value="Biadasz">Biadasz</option>
+                 <option value="Chaves">Chaves</option>
+                 <option value="Costello">Costello</option>
+                 <option value="Downs">Downs</option>
+                 <option value="Knott">Knott</option>
+                 <option value="MacLaughlin">MacLaughlin</option>
+                 <option value="McKiernan">McKiernan</option>
+                 <option value="Molina">Molina</option>
+                 <option value="Neddo">Neddo</option>
+                 <option value="Pinto">Pinto</option>
+                 <option value="Thayer">Thayer</option>
+                 <option value="Zakar">Zakar</option>
+               </select>
+             </td>
+         </tr>
+     </table>
+</form>
+</div>
+</div>
+
+<div class="step" >
+<span class="stepTitle">Step 2: Select items to order</span>
+<ul class="instructionList">
+  <li>Select item quantity and click <span class="buttonName">Add to Cart</span> (do once for each item)</li>
+  <li>After adding an item to your cart, click the <span class="buttonName">Continue Shopping</span> link at PayPal to return to this page and to add more items.</li>
+  <li>Click the <span class="buttonName">Check Out</span> button at PayPal to complete your order</li>
+</ul>
+<div style="margin: 10px 0px 10px 0px">
+  After adding an item to your cart, click the <strong>Continue Shopping</strong> link at PayPal to return to this page to add more items.  Click the <strong>Check Out</strong> button at PayPal to complete your order.
+</div>
+<table style="margin-top: 10px; text-align: center" align="center">
+     <tbody>
+         <tr align="center">
+             <th class="orderColumn">Dinner Tickets</th>
+             <th class="orderColumn">Extra Pizza Slizes</th>
+             <th class="orderColumn">Raffle Tickets</th>
+         </tr>
+         <tr>
+             <td valign="top">
+<form id="addDinner" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="8XG53N8L24SW2">
+<table align="center">
+                         <tr>
+                             <td><select name="quantity">
+                             <option value="1">1 Ticket - $9</option>
+                             <option value="2">2 Tickets - $18</option>
+                             <option value="3">3 Tickets - $27</option>
+                             <option value="4">4 Tickets - $36</option>
+                             <option value="5">5 Tickets - $45</option>
+                             <option value="6">6 Tickets - $54</option>
+                             <option value="7">7 Tickets - $63</option>
+                             <option value="8">8 Tickets - $72</option>
+                             </select> </td>
+                         </tr>
+<tr><td><input type="hidden" name="on0" value="Seating Preference">Seating Preference</td></tr><tr><td><select name="os0">
+	<option value="5:15 - 6:15 PM">5:15 - 6:15 PM </option>
+	<option value="6:30 - 7:30 PM">6:30 - 7:30 PM </option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="on1" value="Student Name"><input id="addDinnerStudent" type="hidden" name="os1" >
+<input type="hidden" name="on2" value="Teacher Name"><input id="addDinnerTeacher" type="hidden" name="os2" >
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+             </td>
+
+             <td valign="top">
+<form id="addPizza" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="HEJF82YBJUGEC">
+<table align="center">
+                         <tr>
+                             <td><select name="quantity">
+                             <option value="1">1 Slice - $2</option>
+                             <option value="2">2 Slices - $4</option>
+                             <option value="3">3 Slices - $6</option>
+                             <option value="4">4 Slices - $8</option>
+                             <option value="5">5 Slices - $10</option>
+                             <option value="6">6 Slices - $12</option>
+                             <option value="7">7 Slices - $14</option>
+                             <option value="8">8 Slices - $16</option>
+                             <option value="9">9 Slices - $18</option>
+                             <option value="10">10 Slices - $20</option>
+                             </select> </td>
+                         </tr>
+</table>
+<input type="hidden" name="on0" value="Student Name"><input id="addPizzaStudent" type="hidden" name="os0" >
+<input type="hidden" name="on1" value="Teacher Name"><input id="addPizzaTeacher" type="hidden" name="os1" >
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<br/><span><em>(Requires Dinner Ticket Purchase)</em></span>
+</form>
+             </td>
+             <td valign="top">
+<form id="addRaffle" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="A6FSN7ZQPBTGW">
+<table align="center">
+<tr><td><select name="os0">
+	<option value="6 Tickets">6 Tickets - $5</option>
+	<option value="15 Tickets">15 Tickets - $10</option>
+	<option value="40 Tickets">40 Tickets - $25</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="on0" value="Raffle Tickets">
+<input type="hidden" name="on1" value="Student Name"><input id="addRaffleStudent" type="hidden" name="os1" >
+<input type="hidden" name="on2" value="Teacher Name"><input id="addRaffleTeacher" type="hidden" name="os2" >
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+             </td>
+         </tr>
+     </tbody>
+</table>
+</div>
+
+<div class="step">
+<span class="stepTitle">Step 3: Review cart and check out at PayPal</span>
+<ul class="instructionList" >
+  <li>Click the <span class="buttonName">View Cart</span> button to review your cart and begin the final check out process at PayPal</li>
+</ul>
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+      </div>
+	<!--<p class="ordering-closed" >Sorry, we are no longer accepting new orders for the dinner.</p>-->
 
 <div class="sponsors" >
   <h4>Dinner Sponsors</h4>
-  <p>State Representative Hannah Kane</p>
-
+  <p><em>Your business name here...</em></p>
   <h4>Raffle Donations</h4>
-<p>2 Ovens</p>
-<p>American Girl</p>
-<p>April Jones Prince</p>
-<p>b.Good</p>
-<p>Bertucci's</p>
-<p>Boroughs YMCA</p>
-<p>Boston Children's Museum</p>
-<p>Bowlero</p>
-<p>The Butterfly Place</p>
-<p>Casson-Foster Photographers</p>
-<p>Dean Park Pizza</p>
-<p>Ecotarium</p>
-<p>Gymnastics Learning Center</p>
-<p>Isabella Stewart Gardner Museum</p>
-<p>Laser Craze</p>
-<p>Papa's Hardware</p>
-<p>Pawtucket Red Sox</p>
-<p>Shrewsbury Fire Station</p>
-<p>SkyZone</p>
-<p>Southwick's Zoo</p>
-<p>Starbucks Northborough</p>
-<p>Subway Route 9 Shrewsbury</p>
-<p>Tower Hill Botanical Gardens</p>
-<p>Trader Joe's</p>
-<p>Worcester Restaurant Group</p>
+  <p>AAA</p>
+  <p>American Girl</p>
+  <p>Bertucci's</p>
+  <p>Boston Children's Museum</p>
+  <p>The Butterfly Place</p>
+  <p>Isabella Stewart Gardner Museum</p>
+  <p>Pawtucket Red Sox</p>
+  <p>Shrewsbury Fire Station</p>
 </div>
 
 <div class="footer" >
