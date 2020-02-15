@@ -1,252 +1,253 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Beal Family Dinner 2020</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Beal Family Dinner 2020</title>
 
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="site.css" rel="stylesheet">
-<!--[if IE]>
-<style>#bealHeading {margin-top: 30px; }</style>
-<![endif]-->
-<script>
-/*!
- * jQuery Cookie Plugin v1.3.1
- * https://github.com/carhartl/jquery-cookie
- *
- * Copyright 2013 Klaus Hartl
- * Released under the MIT license
- */
-(function (factory) {
-	if (typeof define === 'function' && define.amd && define.amd.jQuery) {
-		// AMD. Register as anonymous module.
-		define(['jquery'], factory);
-	} else {
-		// Browser globals.
-		factory(jQuery);
-	}
-}(function ($) {
-
-	var pluses = /\+/g;
-
-	function raw(s) {
-		return s;
-	}
-
-	function decoded(s) {
-		return decodeURIComponent(s.replace(pluses, ' '));
-	}
-
-	function converted(s) {
-		if (s.indexOf('"') === 0) {
-			// This is a quoted cookie as according to RFC2068, unescape
-			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
-		}
-		try {
-			return config.json ? JSON.parse(s) : s;
-		} catch(er) {}
-	}
-
-	var config = $.cookie = function (key, value, options) {
-
-		// write
-		if (value !== undefined) {
-			options = $.extend({}, config.defaults, options);
-
-			if (typeof options.expires === 'number') {
-				var days = options.expires, t = options.expires = new Date();
-				t.setDate(t.getDate() + days);
-			}
-
-			value = config.json ? JSON.stringify(value) : String(value);
-
-			return (document.cookie = [
-				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
-				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-				options.path    ? '; path=' + options.path : '',
-				options.domain  ? '; domain=' + options.domain : '',
-				options.secure  ? '; secure' : ''
-			].join(''));
-		}
-
-		// read
-		var decode = config.raw ? raw : decoded;
-		var cookies = document.cookie.split('; ');
-		var result = key ? undefined : {};
-		for (var i = 0, l = cookies.length; i < l; i++) {
-			var parts = cookies[i].split('=');
-			var name = decode(parts.shift());
-			var cookie = decode(parts.join('='));
-
-			if (key && key === name) {
-				result = converted(cookie);
-				break;
-			}
-
-			if (!key) {
-				result[name] = converted(cookie);
-			}
-		}
-
-		return result;
-	};
-
-	config.defaults = {};
-
-	$.removeCookie = function (key, options) {
-		if ($.cookie(key) !== undefined) {
-			$.cookie(key, '', $.extend(options, { expires: -1 }));
-			return true;
-		}
-		return false;
-	};
-
-}));
-</script>
-<script>
-  function studentMissing() {
-    return !$("#studentFirstName").val() || !$("#studentLastName").val();
-  }
-
-  function teacherMissing() {
-    return !$("#teacherName option:selected").val();
-  }
-
-  function setTeacherAndStudent() {
-    var student = studentMissing() ? "" : $("#studentLastName").val() + ", " + $("#studentFirstName").val();
-    $("#addDinnerStudent,#addPizzaStudent,#addRaffleStudent").val(student);
-    $.cookie('bfd2013fname', $("#studentFirstName").val());
-    $.cookie('bfd2013lname', $("#studentLastName").val());
-    var teacher = teacherMissing() ? "" : $("#teacherName option:selected").val();
-    $("#addDinnerTeacher,#addPizzaTeacher,#addRaffleTeacher").val(teacher);
-    $.cookie('bfd2013teach', teacher);
-  }
-
-  function initTeacherAndStudent() {
-    var studentFirstName = $.cookie('bfd2013fname');
-    if (studentFirstName) {
-      $("#studentFirstName").val(studentFirstName);
+  <!-- Custom styles for this template -->
+  <link href="site.css" rel="stylesheet">
+  <!--[if IE]>
+  <style>#bealHeading {margin-top: 30px; }</style>
+  <![endif]-->
+  <script>
+  /*!
+  * jQuery Cookie Plugin v1.3.1
+  * https://github.com/carhartl/jquery-cookie
+  *
+  * Copyright 2013 Klaus Hartl
+  * Released under the MIT license
+  */
+  (function (factory) {
+    if (typeof define === 'function' && define.amd && define.amd.jQuery) {
+      // AMD. Register as anonymous module.
+      define(['jquery'], factory);
+    } else {
+      // Browser globals.
+      factory(jQuery);
     }
-    var studentLastName = $.cookie('bfd2013lname');
-    if (studentLastName) {
-      $("#studentLastName").val(studentLastName);
+  }(function ($) {
+
+    var pluses = /\+/g;
+
+    function raw(s) {
+      return s;
     }
-    var teacher = $.cookie('bfd2013teach');
-    if (teacher) {
-      $("#teacherName option").each(function () {
-        if (this.value == teacher) {
-          this.selected = true;
+
+    function decoded(s) {
+      return decodeURIComponent(s.replace(pluses, ' '));
+    }
+
+    function converted(s) {
+      if (s.indexOf('"') === 0) {
+        // This is a quoted cookie as according to RFC2068, unescape
+        s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+      }
+      try {
+        return config.json ? JSON.parse(s) : s;
+      } catch(er) {}
+    }
+
+    var config = $.cookie = function (key, value, options) {
+
+      // write
+      if (value !== undefined) {
+        options = $.extend({}, config.defaults, options);
+
+        if (typeof options.expires === 'number') {
+          var days = options.expires, t = options.expires = new Date();
+          t.setDate(t.getDate() + days);
         }
-      });
-    }
-  }
 
-  $(document).ready(function() {
-    $("#addDinner,#addPizza").submit(function(event) {
-      if (studentMissing()) { alert("Please enter the Student's Name"); event.preventDefault(); return; }
-      if (teacherMissing()) { alert("Please select the Teacher's Name"); event.preventDefault(); return; }
-      setTeacherAndStudent();
-    });
-    $("#addRaffle").submit(function(event) {
-      setTeacherAndStudent();
-    });
-    initTeacherAndStudent();
-  });
+        value = config.json ? JSON.stringify(value) : String(value);
+
+        return (document.cookie = [
+          encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
+          options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+          options.path    ? '; path=' + options.path : '',
+          options.domain  ? '; domain=' + options.domain : '',
+          options.secure  ? '; secure' : ''
+        ].join(''));
+      }
+
+      // read
+      var decode = config.raw ? raw : decoded;
+      var cookies = document.cookie.split('; ');
+      var result = key ? undefined : {};
+      for (var i = 0, l = cookies.length; i < l; i++) {
+        var parts = cookies[i].split('=');
+        var name = decode(parts.shift());
+        var cookie = decode(parts.join('='));
+
+        if (key && key === name) {
+          result = converted(cookie);
+          break;
+        }
+
+        if (!key) {
+          result[name] = converted(cookie);
+        }
+      }
+
+      return result;
+    };
+
+    config.defaults = {};
+
+    $.removeCookie = function (key, options) {
+      if ($.cookie(key) !== undefined) {
+        $.cookie(key, '', $.extend(options, { expires: -1 }));
+        return true;
+      }
+      return false;
+    };
+
+  }));
 </script>
-  </head>
-  <body>
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Beal Family Dinner 2020</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="#contact" data-toggle="modal" data-target="#contactModal">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<script>
+function studentMissing() {
+  return !$("#studentFirstName").val() || !$("#studentLastName").val();
+}
 
+function teacherMissing() {
+  return !$("#teacherName option:selected").val();
+}
+
+function setTeacherAndStudent() {
+  var student = studentMissing() ? "" : $("#studentLastName").val() + ", " + $("#studentFirstName").val();
+  $("#addDinnerStudent,#addPizzaStudent,#addRaffleStudent").val(student);
+  $.cookie('bfd2013fname', $("#studentFirstName").val());
+  $.cookie('bfd2013lname', $("#studentLastName").val());
+  var teacher = teacherMissing() ? "" : $("#teacherName option:selected").val();
+  $("#addDinnerTeacher,#addPizzaTeacher,#addRaffleTeacher").val(teacher);
+  $.cookie('bfd2013teach', teacher);
+}
+
+function initTeacherAndStudent() {
+  var studentFirstName = $.cookie('bfd2013fname');
+  if (studentFirstName) {
+    $("#studentFirstName").val(studentFirstName);
+  }
+  var studentLastName = $.cookie('bfd2013lname');
+  if (studentLastName) {
+    $("#studentLastName").val(studentLastName);
+  }
+  var teacher = $.cookie('bfd2013teach');
+  if (teacher) {
+    $("#teacherName option").each(function () {
+      if (this.value == teacher) {
+        this.selected = true;
+      }
+    });
+  }
+}
+
+$(document).ready(function() {
+  $("#addDinner,#addPizza").submit(function(event) {
+    if (studentMissing()) { alert("Please enter the Student's Name"); event.preventDefault(); return; }
+    if (teacherMissing()) { alert("Please select the Teacher's Name"); event.preventDefault(); return; }
+    setTeacherAndStudent();
+  });
+  $("#addRaffle").submit(function(event) {
+    setTeacherAndStudent();
+  });
+  initTeacherAndStudent();
+});
+</script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Beal Family Dinner 2020</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="#contact" data-toggle="modal" data-target="#contactModal">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
 
-      <div class="site">
-	<img src="beal.jpg" >
-        <h1>Beal Family Dinner 2020</h1>
-        <p class="info">Join fellow Beal families for an evening of dinner, socializing, and fabulous raffles...all to benefit Beal School.</p>
-	<div class="overview">
-	  <p><label>Wednesday, March 25th</label></p>
-	  <p><label>First Seating:</label> 5:15 pm - 6:15 pm</p>
-	  <p><label>Second Seating:</label> 6:30 pm - 7:30 pm</p>
-	  <p><label>Location:</label> Shrewsbury High School, 64 Holden St.</p>
-	  <p><label>Admission:</label> $9 per person* (includes 1 slice of cheese pizza, fresh fruit, salad, and drink)
-            <div class="footnote">*Children 3 and under are FREE.</div></p>
-	</div>
+  <div class="container">
+
+    <div class="site">
+      <img src="beal.jpg" >
+      <h1>Beal Family Dinner 2020</h1>
+      <p class="info">Join fellow Beal families for an evening of dinner, socializing, and fabulous raffles...all to benefit Beal School.</p>
+      <div class="overview">
+        <p><label>Wednesday, March 25th</label></p>
+        <p><label>First Seating:</label> 5:15 pm - 6:15 pm</p>
+        <p><label>Second Seating:</label> 6:30 pm - 7:30 pm</p>
+        <p><label>Location:</label> Shrewsbury High School, 64 Holden St.</p>
+        <p><label>Admission:</label> $9 per person* (includes 1 slice of cheese pizza, fresh fruit, salad, and drink)
+          <div class="footnote">*Children 3 and under are FREE.</div></p>
+        </div>
 
 
-	<div>
-	<br>
-	<h1 style="color: red; font-weight: bold;">Meal sales and raffle pre-sales will start on March 1.</h1>
-	<h2 style="font-size: 24px; font-style: italic;">Additional raffle tickets available at the event.</h2>
-	</div>
+        <div>
+          <br>
+          <h1 style="color: red; font-weight: bold;">Meal sales and raffle pre-sales will start on March 1.</h1>
+          <h2 style="font-size: 24px; font-style: italic;">Additional raffle tickets available at the event.</h2>
+        </div>
 
-
-	</div>
-	<!--<p class="ordering-closed" >Sorry, we are no longer accepting new orders for the dinner.</p>-->
-
-<div class="sponsors" >
-  <h4>Dinner Sponsors</h4>
-<p><em>coming soon</em></p>
-  <h4>Raffle Donations</h4>
-  <p><em>coming soon</em></p>
-</div>
-
-<div class="footer" >
-  <p>Visit our Facebook page: <a href="https://www.facebook.com/Beal-Early-Childhood-Center-PTO-129600707149081/">Beal Early Childhood Center PTO</a></p>
-</div>
 
       </div>
+      <!--<p class="ordering-closed" >Sorry, we are no longer accepting new orders for the dinner.</p>-->
 
-    </div><!-- /.container -->
-<div id="contactModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Contact</h4>
+      <div class="sponsors" >
+        <h4>Dinner Sponsors</h4>
+        <p><em>coming soon</em></p>
+        <h4>Raffle Donations</h4>
+        <p><em>coming soon</em></p>
       </div>
-      <div class="modal-body">
-        <p>Please contact <a href="mailto:bealschoolpto@gmail.com" >bealschoolpto@gmail.com</a> for any questions about the dinner.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
-  </body>
+      <div class="footer" >
+        <p>Visit our Facebook page: <a href="https://www.facebook.com/Beal-Early-Childhood-Center-PTO-129600707149081/">Beal Early Childhood Center PTO</a></p>
+      </div>
+
+    </div>
+
+  </div><!-- /.container -->
+  <div id="contactModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Contact</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please contact <a href="mailto:bealschoolpto@gmail.com" >bealschoolpto@gmail.com</a> for any questions about the dinner.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</body>
 </html>
