@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Beal Family Dinner 2020</title>
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="site.css" rel="stylesheet">
+  <!--[if IE]>
+  <style>#bealHeading {margin-top: 30px; }</style>
+  <![endif]-->
+  <script>
+  function studentMissing() {
+    return !$("#studentFirstName").val() || !$("#studentLastName").val();
+  }
+
+  function teacherMissing() {
+    return !$("#teacherName option:selected").val();
+  }
+
+  function plural(number, label, pluralLabel){
+    pluralLabel = pluralLabel || label+'s';
+    return number + ' ' + (number == 1 ? label : pluralLabel);
+  }
+
+  function addItem(items, id, key, description) {
+    const qty = $('#' + id).val();
+    if (qty == 0) {
+      return;
+    }
+    const price = ($('#' + id + ' option:selected').text().match(/\$([0-9.]+)/)||[])[1];
+    items.push({
+      description: plural($('#' + id).val(), $('#' + id).data('desc')) + (price ? ` ($${price})` : ''),
+      key: $('#' + id).data('key'),
+      qty: qty,
+      price: price,
+    });
+  }
+
+  function getItems() {
+    const selectIds = ['dinnerTicketQty','freeEntries','pizzaQty','samosaQty','raffleQty','disneyRaffleQty'];
+    const items = [];
+    for (let id of selectIds) {
+      addItem(items, id);
+    }
+    return items;
+  }
+
+  function updateTotalPrice(){
+    $('#totalPrice').text('$' + getItems().reduce((total, item) => total + (item.price ? Number(item.price) : 0), 0));
+  }
+
+  $(document).ready(function() {
+    $("select").change(updateTotalPrice);
+    $("#checkout").submit(function(event) {
+      if (studentMissing()) { alert("Please enter the Student's Name"); return false; }
+      if (teacherMissing()) { alert("Please select the Teacher's Name"); return false; }
+
+      const items = getItems();
+
+      const presentItems = items.filter(item => item.qty > 0);
+
+      const data = [];
+      data.push({key:'name', val:$('#studentLastName').val() + ', ' +$('#studentFirstName').val()});
+      data.push({key:'teacher', val:$('#teacherName').val()});
+      data.push({key:'seating', val:$('#seatingPreference').val()});
+
+      const itemName = 'Beal Family Dinner seating ' + $('#seatingPreference').val() +': ' + presentItems.map(item => item.description).join(', ');
+      const itemNumber = presentItems.map(item => `${item.key}:${item.qty}`).join(';') + ';' + data.map(d => d.key + ':' + d.val.replace(/:/g,'_').replace(/;/g,'_')).join(';');
+      const amount = presentItems.reduce((total, item) => total + (item.price ? Number(item.price) : 0), 0);
+
+      location.href = `https://www.paypal.com/xclick/business=bealschoolpto@gmail.com&item_name=${encodeURIComponent(itemName)}&item_number=${encodeURIComponent(itemNumber)}&amount=${encodeURIComponent(amount)}&no_note=1&no_shipping=1&currency_code=USD`;
+
+      return false;
+    });
+    updateTotalPrice();
+  });
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Beal Family Dinner 2020</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="#contact" data-toggle="modal" data-target="#contactModal">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="site">
+      <img src="beal.jpg" >
+      <h1>Beal Family Dinner 2020</h1>
+      <p class="info">Join fellow Beal families for an evening of dinner, socializing, and fabulous raffles...all to benefit Beal School.</p>
+      <div class="overview">
+        <p><label>Wednesday, March 25th</label></p>
+        <p><label>First Seating:</label> 5:15 pm - 6:15 pm</p>
+        <p><label>Second Seating:</label> 6:30 pm - 7:30 pm</p>
+        <p><label>Location:</label> Shrewsbury High School, 64 Holden St.</p>
+        <p><label>Admission:</label> $9 per person* (includes 1 slice of cheese pizza, fresh fruit, salad, and drink)
+          <div class="footnote">*Children 2 and under are FREE.</div>
+        </p>
+      </div>
+
+      <p class="instructions" >Follow the three easy steps below to order dinner tickets, extra pizza slices, and raffle tickets.</p>
+      <p class="payment" >Payment is collected securely via PayPal using your PayPal account or by paying via credit card (no PayPal account needed).</p>
+
+      <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+      <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_SbyPP_mc_vs_dc_ae.jpg" height="75" border="0" alt="PayPal Acceptance Mark"></a></td></tr></table><!-- PayPal Logo -->
+
+      <form id="checkout" method="post">
+        <div class="step">
+          <span class="stepTitle">Step 1: Enter student's and teacher's name</span>
+          <div style="margin-top: 5px" >
+            <table align="center">
+              <tr>
+                <td>Student First Name:</td>
+                <td><input id="studentFirstName" type="text" size="15" maxlength="40" /></td>
+              </tr>
+              <tr>
+                <td>Student Last Name:</td>
+                <td><input id="studentLastName" type="text" size="15" maxlength="40" /></td>
+              </tr>
+              <tr>
+                <td>Teacher:</td>
+                <td>
+                  <select id="teacherName" >
+                    <option value="">Select Teacher</option>
+                    <option value="Aulenback">Aulenback</option>
+                    <option value="Barrett">Barrett</option>
+                    <option value="Biadasz">Biadasz</option>
+                    <option value="Chaves">Chaves</option>
+                    <option value="Costello">Costello</option>
+                    <option value="Kilgore">Kilgore</option>
+                    <option value="Knott">Knott</option>
+                    <option value="Loconto">Loconto</option>
+                    <option value="McKiernan">McKiernan</option>
+                    <option value="Molina">Molina</option>
+                    <option value="Neddo">Neddo</option>
+                    <option value="Pinto">Pinto</option>
+                    <option value="Thayer">Thayer</option>
+                    <option value="Zakar">Zakar</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="step">
+          <span class="stepTitle">Step 2: Select items to order</span>
+          <ul class="instructionList">
+            <li>Choose the number of dinner tickets (age 3+).</li>
+            <li>Choose the number of under age 3 in your party.</li>
+            <li>Choose your seating preference</li>
+            <li>Select any additional food and raffle tickets you'd like to purchase.</li>
+          </ul>
+          <table style="margin-top: 10px; text-align: center" align="center">
+            <tbody>
+              <tr align="center">
+                <th class="orderColumn">Dinner Tickets</th>
+                <th class="orderColumn">Additional Choices</th>
+                <th class="orderColumn">Raffle Tickets</th>
+              </tr>
+              <tr>
+                <td valign="top">
+                  <div>
+                    <select id="dinnerTicketQty" data-key="dinner" data-desc="Dinner ticket">
+                      <option value="1">1 Ticket - $9</option>
+                      <option value="2">2 Tickets - $18</option>
+                      <option value="3">3 Tickets - $27</option>
+                      <option value="4">4 Tickets - $36</option>
+                      <option value="5">5 Tickets - $45</option>
+                      <option value="6">6 Tickets - $54</option>
+                      <option value="7">7 Tickets - $63</option>
+                      <option value="8">8 Tickets - $72</option>
+                    </select>
+                  </div>
+                  <div class="entry">Children 2 and under (free)</div>
+                  <div>
+                    <select id="freeEntries" data-key="free" data-desc="under 3">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                    </select>
+                  </div>
+                  <div class="entry">
+                    <div>Seating Preference</div>
+                    <select id="seatingPreference" data-key="seating">
+                      <option value="5:15 - 6:15 PM">5:15 - 6:15 PM </option>
+                      <option value="6:30 - 7:30 PM">6:30 - 7:30 PM </option>
+                    </select>
+                  </div>
+                </td>
+                <td valign="top">
+                  <span><em>(Dinner Ticket Required)</em></span>
+                  <div style="margin-top: 15px;">Extra pizza slices</div>
+                  <select id="pizzaQty" data-key="pizza" data-desc="Pizza slice">
+                    <option value="0">None</option>
+                    <option value="1">1 Slice - $2</option>
+                    <option value="2">2 Slices - $4</option>
+                    <option value="3">3 Slices - $6</option>
+                    <option value="4">4 Slices - $8</option>
+                    <option value="5">5 Slices - $10</option>
+                    <option value="6">6 Slices - $12</option>
+                    <option value="7">7 Slices - $14</option>
+                    <option value="8">8 Slices - $16</option>
+                    <option value="9">9 Slices - $18</option>
+                    <option value="10">10 Slices - $20</option>
+                  </select>
+                  <div style="margin-top: 15px;">Samosas</div>
+                  <select id="samosaQty" data-key="samosa" data-desc="Samosa">
+                    <option value="0">None</option>
+                    <option value="1">1 Samosa - $2</option>
+                    <option value="2">2 Samosas - $4</option>
+                    <option value="3">3 Samosas - $6</option>
+                    <option value="4">4 Samosas - $8</option>
+                    <option value="5">5 Samosas - $10</option>
+                    <option value="6">6 Samosas - $12</option>
+                    <option value="7">7 Samosas - $14</option>
+                    <option value="8">8 Samosas - $16</option>
+                    <option value="9">9 Samosas - $18</option>
+                    <option value="10">10 Samosas - $20</option>
+                  </select>
+                </td>
+                <td valign="top">
+                  <div class="entry">
+                    <div>General Raffle Tickets</div>
+                    <select id="raffleQty" data-key="raffle" data-desc="Raffle ticket">
+                      <option value="0">None</option>
+                      <option value="5">5 Tickets - $5</option>
+                      <option value="12">12 Tickets - $10</option>
+                      <option value="25">25 Tickets - $20</option>
+                      <option value="50">50 Tickets - $40</option>
+                      <option value="75">75 Tickets - $60</option>
+                      <option value="100">100 Tickets - $75</option>
+                    </select>
+                  </div>
+                  <div class="entry">
+                    <div>Disney Raffle Tickets</div>
+                    <select id="disneyRaffleQty" data-key="disney" data-desc="Disney raffle ticket">
+                      <option value="0">None</option>
+                      <option value="1">1 Ticket - $10</option>
+                      <option value="2">2 Tickets - $20</option>
+                      <option value="3">3 Tickets - $30</option>
+                      <option value="4">4 Tickets - $40</option>
+                      <option value="5">5 Tickets - $50</option>
+                      <option value="6">6 Tickets - $60</option>
+                      <option value="7">7 Tickets - $70</option>
+                      <option value="8">8 Tickets - $80</option>
+                      <option value="9">9 Tickets - $90</option>
+                      <option value="10">10 Tickets - $100</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin: 15px;"><b>Total Price:</b> <span id="totalPrice"></span></div>
+        </div>
+        <div class="step">
+          <span class="stepTitle">Step 3: Check out at PayPal</span>
+          <ul class="instructionList" >
+            <li>Click the <span class="buttonName">Check out</span> button to review your cart and begin the final check out process at PayPal</li>
+            <li>You will receive a confirmation email at your PayPal email address.</li>
+          </ul>
+          <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </div>
+      </form>
+
+      <div class="sponsors" >
+        <h4>Dinner Sponsors</h4>
+        <p><em>coming soon</em></p>
+        <h4>Raffle Donations</h4>
+        <p><em>coming soon</em></p>
+      </div>
+
+      <div class="footer" >
+        <p>Visit our Facebook page: <a href="https://www.facebook.com/Beal-Early-Childhood-Center-PTO-129600707149081/">Beal Early Childhood Center PTO</a></p>
+      </div>
+
+    </div>
+
+  </div><!-- /.container -->
+  <div id="contactModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Contact</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please contact <a href="mailto:bealschoolpto@gmail.com" >bealschoolpto@gmail.com</a> for any questions about the dinner.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</body>
+</html>
