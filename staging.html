@@ -182,15 +182,7 @@
             <li>Choose your seating preference</li>
             <li>Select any additional food and raffle tickets you'd like to purchase.</li>
           </ul>
-          <table style="margin-top: 10px; text-align: center" align="center">
-            <tbody>
-              <tr align="center">
-                <th class="orderColumn">Dinner Tickets</th>
-                <th class="orderColumn">Additional Choices</th>
-                <th class="orderColumn">Raffle Tickets</th>
-              </tr>
-              <tr>
-                <td valign="top">
+                <div class="ticket-section"><b class="heading">Dinner Tickets</b>
                   <div>
                     <select id="dinnerTicketQty" data-key="dinner" data-desc="Dinner ticket">
                       <option value="1">1 Ticket - $9</option>
@@ -224,8 +216,8 @@
                       <option value="6:30 - 7:30 PM">6:30 - 7:30 PM </option>
                     </select>
                   </div>
-                </td>
-                <td valign="top">
+                </div>
+                <div class="ticket-section"><b class="heading">Additional Choices</b>
                   <span><em>(Dinner Ticket Required)</em></span>
                   <div style="margin-top: 15px;">Extra pizza slices</div>
                   <select id="pizzaQty" data-key="pizza" data-desc="Pizza slice">
@@ -255,8 +247,8 @@
                     <option value="9">9 Samosas - $18</option>
                     <option value="10">10 Samosas - $20</option>
                   </select>
-                </td>
-                <td valign="top">
+                </div>
+                <div class="ticket-section"><b class="heading">Raffle Tickets</b>
                   <div class="entry">
                     <div>General Raffle Tickets</div>
                     <select id="raffleQty" data-key="raffle" data-desc="Raffle ticket">
@@ -285,11 +277,9 @@
                       <option value="10">10 Tickets - $100</option>
                     </select>
                   </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="margin: 15px;"><b>Total Price:</b> <span id="totalPrice"></span></div>
+                </div>
+          <div style="margin: 50px 15px 15px;"><b>Total Price:</b> <span id="totalPrice"></span></div>
+          <div><b>Note:</b> Addition raffle tickets are available at the event. Dinner tickets MUST be purchased in advance.</div>
         </div>
         <div class="step">
           <span class="stepTitle">Step 3: Check out at PayPal</span>

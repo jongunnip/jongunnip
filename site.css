@@ -25,3 +25,15 @@ ul.instructionList { margin-left: 15%; margin-right: 15%; text-align: left }
 .sponsors h4 { text-decoration: underline }
 .sponsors p { margin: 2px }
 .footer { margin-top: 30px;  }
+
+.entry {margin-top: 15px;}
+
+.ticket-section {display: inline-block; margin-left: 20px; vertical-align: top;}
+.ticket-section .heading {display: block; font-size:20px;}
+
+@media only screen and (max-width: 600px) {
+  .ticket-section {
+    margin-top: 50px;
+    display: block;
+  }
+}
