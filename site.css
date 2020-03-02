@@ -21,8 +21,10 @@ h1 { font-size: 30px; font-weight: bold }
 .payment { font-size: 11px; }
 .buttonName { font-weight: bold }
 ul.instructionList { margin-left: 15%; margin-right: 15%; text-align: left }
-.sponsors { margin-top: 30px; }
+.sponsors { margin: 30px auto; width: 600px; }
 .sponsors h4 { text-decoration: underline }
+.sponsors ul li { text-align: left; }
+.sponsors ul { margin-left: 100px;}
 .sponsors p { margin: 2px }
 .footer { margin-top: 30px;  }
 
