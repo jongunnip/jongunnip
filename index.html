@@ -54,7 +54,7 @@
   }
 
   function getItems() {
-    const selectIds = ['dinnerTicketQty','freeEntries','pizzaQty','samosaQty','raffleQty','disneyRaffleQty'];
+    const selectIds = ['dinnerTicketQty','freeEntries','pizzaQty','samosaQty','generalQty','disneyQty'];
     const items = [];
     for (let id of selectIds) {
       addItem(items, id);
@@ -251,7 +251,7 @@
                 <div class="ticket-section"><b class="heading">Raffle Tickets</b>
                   <div class="entry">
                     <div>General Raffle Tickets</div>
-                    <select id="raffleQty" data-key="raffle" data-desc="Raffle ticket">
+                    <select id="generalQty" data-key="general" data-desc="General ticket">
                       <option value="0">None</option>
                       <option value="5">5 Tickets - $5</option>
                       <option value="12">12 Tickets - $10</option>
@@ -263,7 +263,7 @@
                   </div>
                   <div class="entry">
                     <div>Disney Raffle Tickets</div>
-                    <select id="disneyRaffleQty" data-key="disney" data-desc="Disney raffle ticket">
+                    <select id="disneyQty" data-key="disney" data-desc="Disney ticket">
                       <option value="0">None</option>
                       <option value="1">1 Ticket - $10</option>
                       <option value="2">2 Tickets - $20</option>
